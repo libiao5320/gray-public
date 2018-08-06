@@ -1,0 +1,125 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>灰度发布管理配置</title>
+  <link rel="stylesheet" type="text/css" href="../static/verdor/easyui/css/easyui.css">
+
+
+
+  <style>
+    body {
+      font-family:verdana,helvetica,arial,sans-serif;
+      padding:20px;
+      font-size:12px;
+      margin:0;
+    }
+    h2 {
+      font-size:18px;
+      font-weight:bold;
+      margin:0;
+      margin-bottom:15px;
+    }
+    .demo-info{
+      padding:0 0 12px 0;
+    }
+    .demo-tip{
+      display:none;
+    }
+    .label-top{
+      display: block;
+      height: 22px;
+      line-height: 22px;
+      vertical-align: middle;
+    }
+  </style>
+
+</head>
+<body >
+
+
+<div data-options="region:'center',title:'灰度发布管理'">
+
+
+  <table id="dg">
+
+
+  </table>
+
+</div>
+
+<div id="add_dd" style="width:60%;padding:30px 60px;display: none;">
+  <form id="add_ff" method="post">
+    <div style="padding:5px;">
+      <input name="url"/>
+    </div>
+    <div style="padding:5px;">
+      <input name="ruleResult[graytype]"/>
+    </div>
+    <div style="padding:5px;">
+      <input name="ruleResult[grayValue]"/>
+    </div>
+
+  </form>
+</div>
+
+
+<div id="edit_dd" style="width:60%;padding:30px 60px;display: none;">
+  <form id="edit_ff" method="post">
+    <div style="padding:5px;">
+      <input name="url" value=""/>
+      <input type="hidden" name="ruleId" />
+    </div>
+    <div style="padding:5px;">
+      <input name="ruleResult[graytype]"/>
+    </div>
+    <div style="padding:5px;">
+      <input name="ruleResult[grayValue]"/>
+      <input type="hidden" name="ruleResult[resultId]"/>
+    </div>
+
+  </form>
+</div>
+
+
+<div id="condition_dd" style="width:60%;padding:30px 60px;display: none;">
+
+  <div class="easyui-layout" style="width:100%;height:100%;">
+    <div data-options="region:'north'" style="height:50%;">
+      <table id="condition_dg">
+
+
+      </table>
+    </div>
+
+    <div data-options="region:'south',split:true" style="height:40%;">
+
+
+      <table id="index_dg">
+
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--<div style="padding:5px;">-->
+<!--<table id="index_dg">-->
+
+
+<!--</table>-->
+<!--</div>-->
+
+<script type="text/javascript" src="../static/verdor/easyui/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/verdor/easyui/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/static/verdor/serializejson/jquery.serializejson.js"></script>
+<script type="text/javascript" src="/static/self/js/common/component.js" defer="true"></script>
+<script type="text/javascript" src="/static/self/js/graymanager.js" defer="true"></script>
+
+</body>
+
+
+</html>

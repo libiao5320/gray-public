@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.mapper.ConditionIndexRelMapper">
+
+
+  <resultMap id="resultMap" type="com.unicom.pojo.condition.rel.ConditionIndexRel">
+
+    <id column="rel_id" property="relId"></id>
+
+
+    <result column="index_id" property="indexId"></result>
+    <result column="condition_id" property="conditionId"></result>
+    <result column="crt_user" property="crtUser"></result>
+    <result column="upt_user" property="uptUser"></result>
+    <result column="crt_time" property="crtTime"></result>
+    <result column="upt_time" property="uptTime"></result>
+
+
+
+  </resultMap>
+
+  <insert id="add" parameterType="com.unicom.pojo.condition.rel.ConditionIndexRel">
+    <selectKey order="AFTER" resultType="java.lang.String" keyProperty="relId"
+      statementType="PREPARED">
+      select LAST_INSERT_ID() as relId
+    </selectKey>
+    insert into tb_condition_index_rel (rel_id,index_id,condition_id
+    ,crt_user,upt_user,crt_time,upt_time)
+    values(#{relId},#{indexId},#{conditionId},#{crtUser},#{uptUser},date_format(sysdate(),'%Y%m%d%H%i%S'),date_format(sysdate(),'%Y%m%d%H%i%S'));
+  </insert>
+
+
+</mapper>
+
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.mapper.RuleResultMapper">
+
+
+  <resultMap id="resultMap" type="com.unicom.pojo.rule.RuleResult">
+
+    <id column="result_id" property="resultId"></id>
+    <result column="rule_id" property="ruleId"></result>
+    <result column="crt_user" property="crtUser"></result>
+    <result column="upt_user" property="uptUser"></result>
+    <result column="crt_time" property="crtTime"></result>
+    <result column="upt_time" property="uptTime"></result>
+    <result column="gray_value" property="grayValue"></result>
+    <result column="gray_type" property="graytype"></result>
+    <result column="state" property="state"></result>
+
+
+  </resultMap>
+
+  <insert id="add" parameterType="com.unicom.pojo.rule.RuleResult">
+    <selectKey order="AFTER" resultType="java.lang.String" keyProperty="resultId"
+      statementType="PREPARED">
+      select LAST_INSERT_ID() as resultId
+    </selectKey>
+    insert into tb_rule_result (result_id,rule_id
+    ,crt_user,upt_user,crt_time,upt_time,gray_value,state,gray_type)
+    values(#{resultId},#{ruleId},#{crtUser},#{uptUser},date_format(sysdate(),'%Y%m%d%H%i%S'),date_format(sysdate(),'%Y%m%d%H%i%S'),#{grayValue},#{state},#{graytype});
+  </insert>
+
+  <select id="fetchAll" resultMap="resultMap">
+
+    select * from tb_rule_result;
+
+  </select>
+
+  <select id="getByRuleId" parameterType="java.lang.String" resultMap="resultMap">
+
+    select * from tb_rule_result where rule_id = #{ruleId};
+
+  </select>
+
+
+  <update id="update">
+
+
+
+    update tb_rule_result
+    <trim prefix="set" suffixOverrides=",">
+      gray_value  = '',
+      <if test="grayValue!=null">
+        gray_value  = #{grayValue},
+      </if>
+
+      <if test="graytype!=null">
+        gray_type  = #{graytype},
+      </if>
+
+
+      upt_time = date_format(sysdate(),'%Y%m%d%H%i%S')
+    </trim>
+    where result_id = #{resultId}
+
+
+  </update>
+</mapper>
+
+

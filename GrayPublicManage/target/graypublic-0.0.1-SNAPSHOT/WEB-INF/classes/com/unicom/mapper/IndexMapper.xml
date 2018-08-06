@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.mapper.IndexMapper">
+
+
+  <resultMap id="resultMap" type="com.unicom.pojo.condition.index.AbstractIndex">
+
+    <id column="index_id" property="indexId"></id>
+    <result column="condition_id" property="conditionId"></result>
+    <result column="crt_user" property="crtUser"></result>
+    <result column="upt_user" property="uptUser"></result>
+    <result column="crt_time" property="crtTime"></result>
+    <result column="upt_time" property="uptTime"></result>
+    <result column="state" property="state"></result>
+    <result column="field" property="field"></result>
+    <result column="op" property="op"></result>
+    <result column="val" property="value"></result>
+
+  </resultMap>
+
+  <insert id="add" parameterType="com.unicom.pojo.condition.index.IIndex">
+    <selectKey order="AFTER" resultType="java.lang.String" keyProperty="indexId"
+      statementType="PREPARED">
+      select LAST_INSERT_ID() as indexId
+    </selectKey>
+    insert into tb_index (index_id,condition_id
+    ,crt_user,upt_user,crt_time,upt_time,field,op,val,state)
+    values(#{indexId},#{conditionId},#{crtUser},#{uptUser},date_format(sysdate(),'%Y%m%d%H%i%S'),date_format(sysdate(),'%Y%m%d%H%i%S'),#{field},#{op},#{value},#{state});
+  </insert>
+
+
+  <select id="getByConditionId" resultMap="resultMap" >
+    select b.* from
+    tb_index b where b.condition_id = #{conditionId} and state = 1
+  </select>
+
+  <update id="del">
+  update tb_index set state = 0 where index_id in
+  <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+    #{item}
+  </foreach>
+  </update>
+
+
+  <update id="update">
+
+    update tb_index
+    <trim prefix="set" suffixOverrides=",">
+      <if test="op!=null">
+        op= #{op,jdbcType=VARCHAR} ,
+      </if>
+      <if test="field!=null">
+        field= #{field,jdbcType=VARCHAR} ,
+      </if>
+      <if test="value!=null">
+        val= #{value,jdbcType=VARCHAR} ,
+      </if>
+      upt_time = date_format(sysdate(),'%Y%m%d%H%i%S')
+    </trim>
+
+    where
+    index_id = #{indexId}
+
+  </update>
+
+</mapper>
+
+

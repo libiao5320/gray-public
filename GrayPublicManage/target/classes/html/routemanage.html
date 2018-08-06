@@ -1,0 +1,132 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>灰度发布管理配置</title>
+  <link rel="stylesheet" type="text/css" href="../static/verdor/easyui/css/easyui.css">
+
+
+
+  <style>
+    body {
+      font-family:verdana,helvetica,arial,sans-serif;
+      padding:20px;
+      font-size:12px;
+      margin:0;
+    }
+    h2 {
+      font-size:18px;
+      font-weight:bold;
+      margin:0;
+      margin-bottom:15px;
+    }
+    .demo-info{
+      padding:0 0 12px 0;
+    }
+    .demo-tip{
+      display:none;
+    }
+    .label-top{
+      display: block;
+      height: 22px;
+      line-height: 22px;
+      vertical-align: middle;
+    }
+  </style>
+
+</head>
+<body>
+
+<div data-options="region:'center',title:'路由管理'">
+
+  <table id="dg">
+
+
+  </table>
+
+</div>
+
+
+<div id="add_dd" style="display: none;">
+  <form id="add_ff" method="post">
+    <div style="padding:5px;">
+      <input type="text" name="routeKey"/>
+      <div style="padding:5px;">
+        <input type="text" name="path"/>
+      </div>
+      <div style="padding:5px;">
+        <input type="text" name="servicetype"/>
+      </div>
+      <div name="div_url" style="padding:5px;">
+        <input type="text" name="url"/>
+      </div>
+      <div name="div_serviceid" style="padding:5px;">
+        <input name="serviceId" />
+      </div>
+
+      <div style="padding:5px;">
+        <input name="stripPrefix"/>
+      </div>
+      <div style="padding:5px;">
+        <input name="retryable"/>
+      </div>
+      <div style="padding:5px;">
+        <input type="text" name="index"/>
+      </div>
+  </form>
+</div>
+
+
+<div id="edit_dd" style="display: none;">
+  <form id="edit_ff" method="post">
+
+    <div style="padding:5px;">
+
+      <input type="text" name="routeKey"/>
+      <input type="hidden" name="id"/>
+    </div>
+
+    <div style="padding:5px;">
+
+      <input type="text" name="path"/>
+    </div>
+
+
+    <div style="padding:5px;">
+      <input type="text" name="servicetype"/>
+
+    </div>
+
+
+    <div name="div_url" style="padding:5px;">
+      <input type="text" name="url"/>
+
+    </div>
+    <div name="div_serviceid" style="padding:5px;">
+
+      <input name="serviceId"/>
+    </div>
+    <div style="padding:5px;">
+      <input name="stripPrefix"/>
+
+    </div>
+    <div style="padding:5px;">
+
+
+      <input name="retryable"/>
+
+    </div>
+    <div style="padding:5px;">
+      <input type="text" name="index"/>
+    </div>
+
+  </form>
+</div>
+<script type="text/javascript" src="../static/verdor/easyui/js/jquery.min.js"></script>
+<script type="text/javascript" src="../static/verdor/easyui/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/static/verdor/serializejson/jquery.serializejson.js"></script>
+<script type="text/javascript" src="/static/self/js/common/component.js" defer="true"></script>
+<script type="text/javascript" src="/static/self/js/routemanage.js" defer="true"></script>
+
+
+</body>
+</html>

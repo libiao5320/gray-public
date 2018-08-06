@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.mapper.OpLogMapper">
+
+
+
+
+  <insert id="add" parameterType="com.unicom.pojo.other.OpLog">
+    <selectKey order="AFTER" resultType="java.lang.String" keyProperty="id"
+      statementType="PREPARED">
+      select LAST_INSERT_ID() as id
+    </selectKey>
+    insert into tb_op_log (id,remote_ip
+    ,op_user,op_class,op_method,op_param,crt_time)
+    values(#{id},#{remoteIp},#{opUser},#{opClass},#{opMethod},#{opParam},date_format(sysdate(),'%Y%m%d%H%i%S'));
+  </insert>
+
+
+
+</mapper>

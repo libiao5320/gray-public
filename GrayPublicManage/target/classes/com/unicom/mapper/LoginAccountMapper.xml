@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.unicom.mapper.LoginAccountMapper">
+
+
+  <resultMap id="resultMap" type="com.unicom.pojo.manager.LoginAccout">
+
+
+    <id column="id" property="id"></id>
+    <result column="login_account" property="loginAccount"></result>
+    <result column="login_password" property="loginPassword"></result>
+    <result column="real_name" property="realName"></result>
+    <result column="state" property="state"></result>
+    <result column="upt_time" property="uptTime"></result>
+    <result column="crt_time" property="crtTime"></result>
+
+
+  </resultMap>
+
+
+  <select id="getByLoginName" resultMap="resultMap">
+
+
+        select * from tb_login_account where login_account = #{value}
+
+    </select>
+
+
+</mapper>
