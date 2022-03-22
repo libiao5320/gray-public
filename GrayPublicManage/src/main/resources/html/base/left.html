@@ -1,14 +1,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
+
+
 <div th:fragment="left">
   <div>
-    <ul>
-      <li>
-        <a href="javascript:void(0);" onclick="openMenu('/graymanage')" >灰度发布管理</a></li>
-      <li><a href="javascript:void(0);" onclick="openMenu('/routemanage')">路由管理</a></li>
+    <ul id="menuUl">
+
     </ul>
   </div>
+
+  <script type="text/javascript" src="/static/verdor/easyui/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/verdor/easyui/js/jquery.easyui.min.js"></script>
+  <script type="text/javascript" src="/static/self/js/common/common.js" defer="true"></script>
+  <script type="text/javascript" src="/static/self/js/system/menu.js" defer="true"></script>
 </div>
 
 

@@ -39,21 +39,15 @@
 
 
 <div th:include="base/top :: top" data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;"></div>
-<div th:include="base/left :: left" data-options="region:'west',split:true,title:'菜单'" style="width:220px;padding:10px;"></div>
+<div th:include="base/left :: left" data-options="region:'west',collapsible:true" style="width:220px;padding:10px;"></div>
 
-<div data-options="region:'center',title:'首页'">
+<div data-options="region:'center'">
     <iframe name="content" marginwidth=0 marginheight=0 width=100% height=100% src="" frameborder=0 scrolling="no" ></iframe>
 </div>
 
 <script type="text/javascript" src="../static/verdor/easyui/js/jquery.min.js"></script>
 <script type="text/javascript" src="../static/verdor/easyui/js/jquery.easyui.min.js"></script>
 <script>
-
-  var openMenu = function(_href){
-
-    $("iframe[name='content']").attr("src",_href);
-
-  }
 
 </script>
 </body>

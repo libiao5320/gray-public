@@ -25,7 +25,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  * @ClassDesc
  **/
 @Component
-@Aspect
+//@Aspect
 public class OpLogAspect {
 
 

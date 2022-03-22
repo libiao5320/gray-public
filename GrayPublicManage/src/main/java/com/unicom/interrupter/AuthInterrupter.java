@@ -34,11 +34,17 @@ public class AuthInterrupter implements HandlerInterceptor {
 //        String isMenu = request.getParameter("isMenu");
 //        String menuId = request.getParameter("menuId");
 
-    Object userInfo = session.getAttribute(Constants.SESSION_USERINFO);
 
-    if (userInfo == null) {
-      response.sendRedirect(NO_SESSION);
-    }
+
+     if (!hasLogin())
+     {
+       response.sendRedirect(NO_SESSION);
+     }
+//    Object userInfo = session.getAttribute(Constants.SESSION_USERINFO);
+//
+//    if (userInfo == null) {
+//      response.sendRedirect(NO_SESSION);
+//    }
 //        if(null != manager) {
 //
 //            List<Role> roles =  manager.getRole();
@@ -99,6 +105,13 @@ public class AuthInterrupter implements HandlerInterceptor {
       throws Exception {
     // TODO Auto-generated method stub
 
+  }
+
+  private boolean hasLogin()
+  {
+
+      boolean flag = true;
+      return true;
   }
 
 }
