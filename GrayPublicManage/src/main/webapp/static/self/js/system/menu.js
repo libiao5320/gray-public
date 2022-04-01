@@ -57,6 +57,7 @@
     });
 
     var openMenu = function(_href){
+        console.info("openMenu :::::::::::" + _href);
         if (!!_href && _href != '') {
             $("iframe[name='content']").attr("src", _href);
         }
